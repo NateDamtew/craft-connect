@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-craft-black text-craft-white font-sans antialiased;
+    background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    min-height: 100dvh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-craft-border2 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-craft-gray-600;
+  }
+
+  ::selection {
+    @apply bg-craft-orange text-white;
+  }
+}
+
+@layer components {
+  .craft-card {
+    @apply bg-craft-surface border border-craft-border rounded-xl;
+  }
+
+  .craft-card-elevated {
+    @apply bg-craft-surface2 border border-craft-border rounded-xl;
+  }
+
+  .craft-input {
+    @apply w-full bg-craft-surface2 border border-craft-border rounded-lg px-4 py-3
+      text-craft-white placeholder-craft-gray-400 text-sm font-medium
+      focus:outline-none focus:border-craft-orange focus:ring-1 focus:ring-craft-orange/30
+      transition-all duration-200;
+  }
+
+  .craft-label {
+    @apply text-xs font-semibold text-craft-gray-400 uppercase tracking-widest;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-200 cursor-pointer select-none;
+  }
+
+  .chip-active {
+    @apply bg-craft-orange text-white border-craft-orange;
+  }
+
+  .chip-inactive {
+    @apply bg-transparent text-craft-gray-400 border-craft-border hover:border-craft-gray-400 hover:text-craft-white;
+  }
+
+  .badge-discipline {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-craft-orange-muted text-craft-orange border border-craft-orange/20;
+  }
+
+  .nav-tab {
+    @apply flex flex-col items-center gap-0.5 px-3 py-2 text-craft-gray-400 transition-all duration-200;
+  }
+
+  .nav-tab-active {
+    @apply text-craft-orange;
+  }
+
+  .match-strength-bar {
+    @apply h-1 rounded-full bg-craft-border overflow-hidden;
+  }
+
+  .skeleton {
+    @apply bg-craft-surface2 rounded animate-pulse;
+    background: linear-gradient(
+      90deg,
+      #1E1E1E 25%,
+      #252525 50%,
+      #1E1E1E 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.8s linear infinite;
+  }
+}
+
+@layer utilities {
+  .text-gradient-orange {
+    background: linear-gradient(135deg, #F26419 0%, #FF7A33 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient-orange {
+    border-image: linear-gradient(135deg, #F26419 0%, #FF7A33 100%) 1;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
