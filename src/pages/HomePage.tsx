@@ -17,16 +17,18 @@ export const HomePage = () => {
     <div className="px-4 py-5 space-y-6 animate-fade-in">
       <GreetingSection name={CURRENT_USER.name} />
 
+      {liveSession && (
+        <LiveNowBanner session={liveSession} />
+      )}
+
+      <UpcomingSection sessions={upcomingSessions} />
+
       <IntentBadge
         intent={currentIntent}
         editable
         onUpdate={setCurrentIntent}
         size="lg"
       />
-
-      {liveSession && (
-        <LiveNowBanner session={liveSession} />
-      )}
 
       {newMatches.length > 0 && (
         <MatchesSection matches={newMatches} />
@@ -35,8 +37,6 @@ export const HomePage = () => {
       {unreadChats.length > 0 && (
         <UnreadChatsSection partnerships={unreadChats} />
       )}
-
-      <UpcomingSection sessions={upcomingSessions} />
 
       <StatsRow />
     </div>
